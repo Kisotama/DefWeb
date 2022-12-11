@@ -48,6 +48,11 @@ class ProductsController extends Controller
         $data = Products::get();
         return view('LoginPage', compact('data'));
     }
+    public function AdLogPage()
+    {
+        $data = Products::get();
+        return view('AdLogPage', compact('data'));
+    }
     public function RegisterPage()
     {
         $data = Products::get();
@@ -92,9 +97,10 @@ class ProductsController extends Controller
     }
     public function edit2($id)
     {
-        $data = Products::where('id', '=', $id)->first();
+        $data = Products::where('Id', '=', $id)->first();
 
-        return view('EditPage', compact('data'));
+        $categories = Category::get();
+        return view('EditPage', compact('data', 'categories'));
     }
 
     public function update(Request $request)

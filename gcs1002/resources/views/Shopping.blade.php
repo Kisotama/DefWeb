@@ -15,8 +15,8 @@
 
         <a href="#" class="logo">Woodcase<span>.</span></a>
         <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#products">products</a>
+            <a href="HomePage">home</a>
+            <a href="Product-add">products</a>
             <a href="#contact">contact</a>
         </nav>
 
@@ -55,18 +55,6 @@
                         <tbody>
                             @foreach ($data as $product )
 
-
-                            {{-- <tr>
-                                <td>{{$product->id}}</td>
-                                <td>{{$product->product}}</td>
-                                <td>{{$product->price}}</td>
-                                <td>
-                                    <a href="#">
-                                    <img src="ProductImg\{{$product->img}}"
-                                    alt="No Img"  height="120px" width="160px"
-                                    title="{{ $product->productDetails }}">
-                                    </a>
-                                </td> --}}
 
                                 <div class="box-container">
                                     <div class="box">
@@ -159,18 +147,6 @@
                             </div>
                         </div>
 
-                            {{-- <div class="box">
-                                <div class="image">
-                                    <img src="assets\ProductImg\{{$product->img}}" alt="No Img">
-                                    <div class="icons">
-                                        <a href="https://youtu.be/dQw4w9WgXcQ" class="cart-btn">add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h3>{{$product->product}}</h3>
-                                    <div class="price"> ${{$product->price}} </div>
-                                </div>
-                            </div> --}}
 
 
 
