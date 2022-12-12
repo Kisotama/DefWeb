@@ -11,17 +11,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/flaticon.css">
-        <link rel="stylesheet" href="assets/css/slicknav.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/nice-select.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -112,27 +112,36 @@
                             <div class="login_part_form_iner">
                                 {{-- <h3>Welcome New Member ! <br>
                                     Sign up now</h3> --}}
-                                <form class="row contact_form" action="{{ url('product-save') }}" method="post"
-                                    novalidate="novalidate">
+                                <form class="row contact_form" action="{{ url('product-update') }}" method="post"
+                                        enctype="multipart/form-data">
                                     @csrf
+
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="hidden" class="form-control" id="id" name="id"
+                                            value="{{ $data->id }}" placeholder="id">
+                                    </div>
+
                                     <div class="col-md-12 form-group p_star">
                                         <input type="text" class="form-control" id="product" name="product"
-                                            value="{{$data->product}}" placeholder="Products Name">
+                                            value="{{ $data->product }}" placeholder="Products Name">
                                     </div>
 
                                     <div class="col-md-12 form-group p_star">
                                         <input type="text" class="form-control" id="price" name="price"
-                                            value="{{$data->price}}" placeholder="Price">
+                                            value="{{ $data->price }}" placeholder="Price">
                                     </div>
-
                                     <div class="col-md-12 form-group p_star">
-                                        <select name="categoryID" class="form-control">
-                                            @foreach ( $categories as $category)
-                                            <option value="{{ $category->ID }}">
-                                                {{ $category->cat_name }}
-                                            </option>
+                                        <select name="categoryID2" class="form-control">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->ID }}">
+                                                    {{ $category->cat_name }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="brand_id">Category</label>
+                                        {{ Form::select('categoryID', $categories, $data->categoryID, ['class' => 'form-control']) }}
                                     </div>
 
                                     <div class="col-md-12 form-group p_star">

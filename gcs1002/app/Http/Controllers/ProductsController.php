@@ -60,7 +60,6 @@ class ProductsController extends Controller
     }
     public function AddPage()
     {
-        $data = Products::get();
         $data = Category::get();
         return view('AddPage', compact('data'));
     }
@@ -107,9 +106,11 @@ class ProductsController extends Controller
     {
         $id = $request->id;
         Products::where('id', '=', $id)->update([
+
             'product' => $request->product,
             'price' => $request->price,
-            'img' => $request->img
+            'img' => $request->img,
+            'categoryID' => $request->categoryID,
         ]);
         return redirect()->back()->with('success', 'Product updated successfully');
     }
